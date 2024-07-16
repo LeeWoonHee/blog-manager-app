@@ -8,6 +8,7 @@ const Dashboard = () => {
     <div className="w-full h-full flex items-center">
       <DashboardMenu setCurrentPage={setCurrentPage} />
       <DashboardMain currentPage={currentPage} />
+      <h1>dashboard</h1>
     </div>
   );
 };
