@@ -1,7 +1,5 @@
-import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import LoginInput from "./LoginInput";
-import { useNavigate } from "react-router-dom";
 
 type LoginDataType = {
   email: string;
@@ -14,7 +12,7 @@ const Login = () => {
     handleSubmit,
     formState: { isValid, errors },
   } = useForm<LoginDataType>();
-  const router = useNavigate();
+
   const onSubmit: SubmitHandler<LoginDataType> = (data: LoginDataType) => {
     console.log(data);
   };
@@ -57,12 +55,6 @@ const Login = () => {
             </button>
           </form>
         </div>
-        <button
-          onClick={() => router("/dashboard")}
-          className="w-full py-3 mt-5 flex justify-center items-center bg-slate-600 text-white text-xl rounded-xl active:bg-slate-800 transition-all active:scale-95 disabled:opacity-70 disabled:active:scale-100 disabled:active:bg-slate-600"
-        >
-          Test Login
-        </button>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const DashboardMain = ({ currentPage }: Props) => {
       <div className="font-bold text-2xl">
         Dashboard with nestjs and react created by lee
       </div>
-      <div className="mt-5">{currentPage !== "home" ? currentPage : null}</div>
+
       <div className="mt-5 w-full h-full flex justify-center items-center">
         {currentPage === "Blog list" ? <BlogList /> : <CreateBlog />}
       </div>

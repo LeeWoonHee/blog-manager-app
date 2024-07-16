@@ -13,6 +13,7 @@ const ToastEditor = ({ editorRef, onChange }: Props) => {
       initialEditType="wysiwyg"
       useCommandShortcut={false}
       ref={editorRef}
+      hideModeSwitch={true}
       onChange={onChange}
     />
   );
