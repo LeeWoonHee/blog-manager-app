@@ -1,13 +1,29 @@
+import { Route, Routes } from "react-router-dom";
 import DashboardMenu from "./DashboardMenu";
-import DashboardMain from "./DashboardMain";
-import { useState } from "react";
+import BlogList from "./BlogList";
+import CreateBlog from "./CreateBlog";
+import BlogDetail from "./BlogDetail";
+import { useEffect } from "react";
+import { useBlogStore } from "../../store/store";
+import ModifyBlog from "./ModifyBlog";
 
 const Dashboard = () => {
-  const [currentPage, setCurrentPage] = useState<string>("Blog list");
+  const { fetchBlogList, blogList } = useBlogStore();
+
+  useEffect(() => {
+    fetchBlogList();
+  }, [blogList]);
   return (
     <div className="w-full h-full flex items-center">
-      <DashboardMenu setCurrentPage={setCurrentPage} />
-      <DashboardMain currentPage={currentPage} />
+      <DashboardMenu />
+      <div className="w-[80%] h-full p-[50px] relative">
+        <Routes>
+          <Route path="/" element={<BlogList />} />
+          <Route path="/create" element={<CreateBlog />} />
+          <Route path="/modify/:id" element={<ModifyBlog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
+        </Routes>
+      </div>
     </div>
   );
 };

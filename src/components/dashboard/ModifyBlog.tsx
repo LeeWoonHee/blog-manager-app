@@ -2,11 +2,15 @@ import { Editor } from "@toast-ui/react-editor";
 import ToastEditor from "./ToastEditor";
 import { useRef } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useBlogStore } from "../../store/store";
 
-const CreateBlog = () => {
+const ModifyBlog = () => {
   const editorRef = useRef<Editor>(null);
   const router = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const { blogList } = useBlogStore();
+  const blogItem = blogList.find((item) => item.id === Number(id));
 
   const onChange = () => {
     const data = editorRef.current?.getInstance().getHTML();
@@ -21,7 +25,7 @@ const CreateBlog = () => {
     const title = firstHeading?.textContent;
 
     try {
-      await axios.post("http://localhost:4000/blog", {
+      await axios.patch(`http://localhost:4000/blog/${id}`, {
         title,
         description: htmlContent,
       });
@@ -34,12 +38,16 @@ const CreateBlog = () => {
   return (
     <div className="w-full h-full pt-[2vw]">
       <div>
-        <ToastEditor editorRef={editorRef} onChange={onChange} />
+        <ToastEditor
+          editorRef={editorRef}
+          onChange={onChange}
+          initialValue={blogItem?.description}
+        />
       </div>
       <div className="w-full flex justify-end items-center mt-[1vw]">
         <div className="w-[8vw] h-[3vw] bg-[#ccc] flex justify-center items-center rounded-lg duration-300 hover:bg-[#aaa] hover:font-bold">
           <button className="w-full h-full" onClick={onEeditorSave}>
-            저장하기
+            수정하기
           </button>
         </div>
       </div>
@@ -47,4 +55,4 @@ const CreateBlog = () => {
   );
 };
 
-export default CreateBlog;
+export default ModifyBlog;

@@ -13,12 +13,16 @@
   "dependencies": {
     "@toast-ui/react-editor": "^3.2.3",
     "@types/node": "^20.14.9",
+    "axios": "^1.7.2",
+    "epub2": "^3.0.2",
+    "epubjs": "^0.3.93",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.0",
     "react-paginate": "^8.2.0",
     "react-router-dom": "^6.24.1",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.4",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.24.8",
@@ -36,6 +40,7 @@
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
     "babel-jest": "^29.7.0",
+    "compressorjs": "^1.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",

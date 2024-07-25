@@ -13,6 +13,10 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
+  position: absolute;
+  bottom: 1.6vw;
+  left: 50%;
+  transform: translateX(-50%);
 
   > * {
     cursor: pointer;
